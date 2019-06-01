@@ -1,8 +1,8 @@
 <?php
-return array(
-    'host' => 'admin',
-    'dbname' => 'tesk',
+return  array(
+    'host' => 'localhost',
+    'dbname' => 'task',
     'user' => 'admin',
-    'pass' => '03Dphsdxfnrf08',
+    'pass' => '03Templar08',
     'typeDB' => 'mysql',
 );
