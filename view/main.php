@@ -102,7 +102,6 @@ $onButton = "btn btn-primary";
     <div class="text-center">
         <nav>
             <ul class="pagination">
-
                <?php
                $uri = ["sort/name/"];
                preg_match("~[a-z]+\/[a-z]+\/~", $_SERVER['REQUEST_URI'], $arrayWithUri);
@@ -110,15 +109,6 @@ $onButton = "btn btn-primary";
                if (!empty($arrayWithUri)) {
                   $uri = $arrayWithUri;
                }
-               ?>
-                <li class="<?php if ($page[0] == 1) {
-                   echo "switch";
-                } ?>">
-                    <a href="/<?= $uri[0] . ($page[0] - 1); ?>" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-               <?php
                for ($i = 1; $i <= (count($allTasks) / 3) + 1; $i++):
                   ?>
                    <li class="<?php if ($page[0] == $i) {
@@ -128,13 +118,6 @@ $onButton = "btn btn-primary";
                endfor;
                ?>
 
-                <li class="<?php if ($page[0] == ceil((count($allTasks) / 3))) {
-                   echo "switch";
-                }; ?>">
-                    <a href="/<?= $uri[0] . ($page[0] + 1); ?>" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
             </ul>
         </nav>
     </div>

@@ -44,20 +44,24 @@ class DbOperations
       $sql = "SELECT * FROM `tasks` WHERE `id` = $id_task";
       $result = $connect->query($sql);
       $taskById = $result->fetch(PDO::FETCH_ASSOC);
+
+
       return $taskById;
    }
 
-   static function ChangeTask($status, $task)
+   static function ChangeTask($status, $task, $id_task)
    {
       require_once ROOT . "/components/connect_db.php";
       $connect = ConnectionDB::getConnection();
-      $sql = "UPDATE `tasks` SET 
+      $sql = "UPDATE `tasks` SET  
                 `status` = :status,            
-                `task` = :task
+                `task` = :task WHERE 
+                `id` = :id_task
       ";
       $result = $connect->prepare($sql);
       $result->bindParam(':status', $status, PDO::PARAM_STR);
       $result->bindParam(':task', $task, PDO::PARAM_STR);
+      $result->bindParam(':id_task', $id_task, PDO::PARAM_STR);
       return $result->execute();
    }
 }
